@@ -1,7 +1,12 @@
-# Emerge Mono Core 1.28.4
+# Emerge Mono Core 1.28.5
 
 カスタマイズでは完成HTMLの編集箇所を指定する。
 管理ではページや投稿タイプの基本フィールドを更新する。
+
+## 1.28.5
+
+- HTMLガイドのダウンロード処理をWordPress Filesystem APIへ移行
+- Plugin Check向けの配布readmeと対応WordPress情報を更新
 
 ## 1.28.4
 

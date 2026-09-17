@@ -36,10 +36,18 @@ add_action( 'admin_post_emcore_download_spec', function () {
 	check_admin_referer( 'emcore_download_spec' );
 	$file = EMCORE_PATH . 'docs/EMERGE-MONO-HTML-GUIDE-v1.3.md';
 	if ( ! is_readable( $file ) ) { wp_die( '仕様書が見つかりません。' ); }
+	global $wp_filesystem;
+	if ( ! function_exists( 'WP_Filesystem' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+	}
+	if ( ! WP_Filesystem() || ! $wp_filesystem ) { wp_die( '仕様書を読み込めません。' ); }
+	$contents = $wp_filesystem->get_contents( $file );
+	if ( false === $contents ) { wp_die( '仕様書を読み込めません。' ); }
 	nocache_headers();
 	header( 'Content-Type: text/markdown; charset=utf-8' );
 	header( 'Content-Disposition: attachment; filename="EMERGE-MONO-HTML-GUIDE-v1.3.md"' );
-	readfile( $file );
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markdown file contents are intentionally returned as a download after capability and nonce checks.
+	echo $contents;
 	exit;
 } );
 
