@@ -1,6 +1,6 @@
 === Emerge Mono - Core ===
 Contributors: emergemono
-Stable tag: 1.28.2
+Stable tag: 1.28.3
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -9,6 +9,11 @@ License: GPLv2 or later
 完成HTMLをWordPressで編集可能にするコアエンジン。
 
 == Changelog ==
+
+= 1.28.3 =
+* Added complete GPL license metadata to the plugin header.
+* Removed an unused translation directory declaration.
+* Excluded development-only test files from release packages and Plugin Check scans.
 
 = 1.28.2 =
 * 投稿タイプに親スラッグと一覧ページ方式を追加しました。

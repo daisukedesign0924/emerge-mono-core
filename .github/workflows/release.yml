@@ -19,10 +19,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - name: Prepare distribution candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/emerge-mono-core
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='build' \
+            --exclude='dist' \
+            --exclude='tests' \
+            ./ build/emerge-mono-core/
       - name: Run official WordPress Plugin Check
         uses: wordpress/plugin-check-action@v1
         with:
-          build-dir: '.'
+          build-dir: './build/emerge-mono-core'
 
   release:
     needs: plugin-check
@@ -51,7 +63,7 @@ jobs:
           set -euo pipefail
           version="${INPUT_VERSION:-${GITHUB_REF_NAME#v}}"
           mkdir -p dist/emerge-mono-core
-          rsync -a --exclude='.git' --exclude='.github' --exclude='dist' ./ dist/emerge-mono-core/
+          rsync -a --exclude='.git' --exclude='.github' --exclude='build' --exclude='dist' --exclude='tests' ./ dist/emerge-mono-core/
           cd dist
           zip -qr "emerge-mono-core-$version.zip" emerge-mono-core
           shasum -a 256 "emerge-mono-core-$version.zip" > "emerge-mono-core-$version.zip.sha256"
