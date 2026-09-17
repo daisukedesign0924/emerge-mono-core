@@ -1,0 +1,42 @@
+name: Release Emerge Mono Core
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify stable version
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="${GITHUB_REF_NAME#v}"
+          if [[ "$version" == *-* ]]; then
+            echo "Only stable releases are public." >&2
+            exit 1
+          fi
+          grep -Eq "Version:[[:space:]]+$version$" emerge-mono-core.php
+
+      - name: Build plugin ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="${GITHUB_REF_NAME#v}"
+          mkdir -p dist/emerge-mono-core
+          rsync -a --exclude='.git' --exclude='.github' --exclude='dist' ./ dist/emerge-mono-core/
+          cd dist
+          zip -qr "emerge-mono-core-$version.zip" emerge-mono-core
+          shasum -a 256 "emerge-mono-core-$version.zip" > "emerge-mono-core-$version.zip.sha256"
+
+      - name: Publish stable release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.zip dist/*.sha256 --generate-notes --verify-tag
