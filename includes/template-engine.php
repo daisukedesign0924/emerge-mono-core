@@ -562,7 +562,9 @@ function emcore_inject_admin_bar( $html ) {
 	if ( ! $bar ) {
 		return $html;
 	}
+	// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet -- A complete stored HTML document is emitted directly, outside wp_head().
 	$css  = '<link rel="stylesheet" href="' . esc_url( includes_url( 'css/dashicons.min.css' ) ) . '">';
+	// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet -- A complete stored HTML document is emitted directly, outside wp_head().
 	$css .= '<link rel="stylesheet" href="' . esc_url( includes_url( 'css/admin-bar.min.css' ) ) . '">';
 	$css .= '<style>html{margin-top:32px !important}#wpadminbar{position:fixed;top:0;left:0;right:0;z-index:99999}</style>';
 	if ( stripos( $html, '</head>' ) !== false ) {
@@ -600,6 +602,7 @@ function emcore_output_html( $html ) {
 	}
 	$html = emcore_inject_admin_bar( $html );
 	if ( '404' !== get_query_var( 'emcore_system_page' ) ) { status_header( 200 ); }
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Core intentionally renders the administrator-approved complete HTML template; escaping would corrupt the document.
 	echo $html;
 	exit;
 }

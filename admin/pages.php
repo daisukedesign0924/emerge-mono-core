@@ -270,7 +270,8 @@ function emcore_page_templates() {
 			$type_badges = '<span class="emcore-badge">' . esc_html( $type_label[ $t['type'] ] ?? $t['type'] ) . '</span>';
 			if ( $t['type'] === 'archive' ) { $type_badges .= ' <span class="emcore-badge">固定ページ</span>'; }
 			$slug_hint = ! empty( $t['post_type_hint'] ) ? $t['post_type_hint'] : ( ! empty( $t['import_file'] ) ? sanitize_title( pathinfo( basename( $t['import_file'] ), PATHINFO_FILENAME ) ) : sanitize_title( $t['name'] ) );
-			echo '<tr><td><strong>' . esc_html( $t['name'] ) . '</strong></td><td>' . $type_badges . '</td><td><span class="emcore-spec-badge is-' . esc_attr( $compliance['status'] ) . '">' . esc_html( $status_label . ' ' . $compliance['score'] ) . '</span></td><td class="emcore-actions">';
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $type_badges is assembled above exclusively from escaped text and fixed markup.
+				echo '<tr><td><strong>' . esc_html( $t['name'] ) . '</strong></td><td>' . $type_badges . '</td><td><span class="emcore-spec-badge is-' . esc_attr( $compliance['status'] ) . '">' . esc_html( $status_label . ' ' . $compliance['score'] ) . '</span></td><td class="emcore-actions">';
 			echo '<a class="emcore-btn emcore-btn-sm" href="' . esc_url( admin_url( 'admin.php?page=emcore-template-edit&id=' . $id ) ) . '">編集箇所を指定</a> ';
 			if ( $t['type'] === 'page' ) {
 				$linked = get_posts( array( 'post_type' => 'page', 'meta_key' => '_emcore_tpl_id', 'meta_value' => $id, 'posts_per_page' => 1, 'post_status' => 'any' ) );
@@ -333,6 +334,7 @@ function emcore_page_template_edit() {
 		}
 	}
 	emcore_shell_start( '編集箇所の指定: ' . $tpl['name'] );
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- emcore_back_link() escapes its URL and label.
 	echo '<div class="emcore-page-nav">' . emcore_back_link( admin_url( 'admin.php?page=emcore-templates' ), 'Templates' ) . '</div>';
 	echo '<div class="emcore-mark-toolbar">';
 	echo '<button type="button" class="emcore-btn emcore-btn-auto" id="emcore-auto-detect">動的コンテンツを検出</button> ';
@@ -428,8 +430,7 @@ function emcore_page_cpts() {
 					if ( $t['type'] !== $which ) {
 						continue;
 					}
-					$sel = ( ! empty( $c[ $which . '_tpl' ] ) && $c[ $which . '_tpl' ] === $tid ) ? ' selected' : '';
-					echo '<option value="' . esc_attr( $tid ) . '"' . $sel . '>' . esc_html( $t['name'] ) . '</option>';
+					echo '<option value="' . esc_attr( $tid ) . '"' . selected( ! empty( $c[ $which . '_tpl' ] ) ? $c[ $which . '_tpl' ] : '', $tid, false ) . '>' . esc_html( $t['name'] ) . '</option>';
 				}
 				echo '</select></td>';
 			}
@@ -493,6 +494,7 @@ function emcore_render_client_editor( $post, $tpl, $args = array() ) {
 	}
 	$fields = $tpl ? emcore_fields_from_html( $tpl['html'] ) : array();
 	emcore_shell_start( $args['title'] );
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- emcore_back_link() escapes its URL and label.
 	echo '<div class="emcore-page-nav emcore-editor-page-nav">' . emcore_back_link( $args['back_url'], $args['back_label'] );
 	if ( $tpl ) {
 		echo '<div class="emcore-editor-page-actions">';
@@ -622,8 +624,7 @@ function emcore_render_client_editor( $post, $tpl, $args = array() ) {
 		if ( ! is_wp_error( $terms ) && $terms ) {
 			echo '<div class="emcore-field emcore-side-card"><label>カテゴリ</label><div class="emcore-cat">';
 			foreach ( $terms as $term ) {
-				$on = in_array( $term->term_id, $have, true ) ? ' checked' : '';
-				echo '<label style="display:inline-flex;gap:6px;margin-right:12px"><input type="checkbox" class="emcore-cat" value="' . esc_attr( $term->term_id ) . '"' . $on . '> ' . esc_html( $term->name ) . '</label>';
+				echo '<label style="display:inline-flex;gap:6px;margin-right:12px"><input type="checkbox" class="emcore-cat" value="' . esc_attr( $term->term_id ) . '"' . checked( in_array( $term->term_id, $have, true ), true, false ) . '> ' . esc_html( $term->name ) . '</label>';
 			}
 			echo '</div></div>';
 		}
@@ -679,6 +680,7 @@ function emcore_page_content_edit() {
 	$tpl = $tpl_id ? emcore_get_template( $tpl_id ) : null;
 	if ( ! $post || ! $tpl ) {
 		emcore_shell_start( '固定ページを編集' );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- emcore_back_link() escapes its URL and label.
 		echo '<div class="emcore-page-nav">' . emcore_back_link( admin_url( 'admin.php?page=emcore-templates' ), 'Templates' ) . '</div>';
 		echo '<div class="emcore-panel"><p>先に Templates で「ページを作成」してください。</p></div>';
 		emcore_shell_end();

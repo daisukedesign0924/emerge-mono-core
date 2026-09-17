@@ -3,7 +3,7 @@
  * Plugin Name: Emerge Mono - Core
  * Plugin URI:  https://github.com/daisukedesign0924/emerge-mono-core
  * Description: 完成HTMLを取り込み、制作側は編集箇所を指定、クライアントは基本フィールドだけで更新できるエンジン。
- * Version:     1.28.3
+ * Version:     1.28.4
  * Author:      Emerge Mono
  * Text Domain: emerge-mono-core
  * Requires at least: 6.0
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'EMCORE_VERSION', '1.28.3' );
+define( 'EMCORE_VERSION', '1.28.4' );
 define( 'EMCORE_FILE', __FILE__ );
 define( 'EMCORE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'EMCORE_URL', plugin_dir_url( __FILE__ ) );
