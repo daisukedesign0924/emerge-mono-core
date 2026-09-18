@@ -35,6 +35,9 @@ jobs:
         uses: wordpress/plugin-check-action@v1
         with:
           build-dir: './build/emerge-mono-core'
+          # GitHub Releases is this plugin's official distribution channel.
+          # The updater check only applies to WordPress.org-hosted plugins.
+          exclude-checks: 'plugin_updater'
 
   release:
     needs: plugin-check

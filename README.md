@@ -1,9 +1,9 @@
-# Emerge Mono Core 1.28.6
+# Emerge Mono Core 1.28.7
 
 カスタマイズでは完成HTMLの編集箇所を指定する。
 管理ではページや投稿タイプの基本フィールドを更新する。
 
-## 1.28.6
+## 1.28.7
 
 - GitHub Releasesからの自動更新検出とSHA-256検証を追加
 - シリーズ共通のstable／beta／alpha更新チャンネル設定を追加
