@@ -1,6 +1,6 @@
 === Emerge Mono - Core ===
 Contributors: emergemono
-Stable tag: 1.28.5
+Stable tag: 1.28.6
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -9,6 +9,10 @@ License: GPLv2 or later
 A core engine that imports complete HTML designs and makes their selected content editable in WordPress.
 
 == Changelog ==
+
+= 1.28.6 =
+* Added signed GitHub Releases update discovery and SHA-256 package verification.
+* Added stable, beta and alpha update channel controls shared across Emerge Mono plugins.
 
 = 1.28.5 =
 * Replaced the direct specification download read with the WordPress Filesystem API.
