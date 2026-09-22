@@ -12,7 +12,7 @@ function emcore_mcp_render_authorization_page( $args = array() ) {
 	) );
 	$approved = ! empty( $args['approved'] );
 	$site_name = get_bloginfo( 'name' ) ?: wp_parse_url( home_url( '/' ), PHP_URL_HOST );
-	$logo_url = EMCORE_URL . 'assets/img/icon-w.webp';
+	$logo_url = EMCORE_URL . 'assets/img/emerge-mono-wordmark-white.webp';
 	?><!doctype html>
 	<html <?php language_attributes(); ?>>
 	<head>
@@ -25,19 +25,19 @@ function emcore_mcp_render_authorization_page( $args = array() ) {
 			body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:42px 42px}
 			.em-auth-shell{position:relative;z-index:1;min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
 			.em-auth-head{height:76px;display:flex;align-items:center;padding:0 clamp(24px,5vw,72px);border-bottom:1px solid rgba(255,255,255,.1);background:rgba(9,10,11,.66);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
-			.em-auth-logo{width:38px;height:38px;object-fit:contain}.em-auth-kicker{margin-left:16px;font:600 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;color:rgba(255,255,255,.48)}
+			.em-auth-logo{width:clamp(154px,18vw,208px);height:auto;max-height:32px;object-fit:contain}.em-auth-kicker{margin-left:20px;padding-left:20px;border-left:1px solid rgba(255,255,255,.14);font:600 10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;color:rgba(255,255,255,.48)}
 			.em-auth-main{width:min(720px,calc(100% - 36px));margin:auto;padding:54px 0}.em-auth-card{position:relative;overflow:hidden;padding:clamp(28px,5vw,52px);border:1px solid rgba(255,255,255,.14);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.095),rgba(255,255,255,.035));box-shadow:0 32px 90px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.09);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px)}
 			.em-auth-card:after{content:"";position:absolute;width:250px;height:250px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-120px;top:-140px;box-shadow:0 0 0 38px rgba(255,255,255,.025);pointer-events:none}
 			.em-auth-eyebrow{margin:0 0 20px;font:600 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.2em;color:rgba(255,255,255,.48)}h1{max-width:570px;margin:0;font-size:clamp(32px,5.2vw,54px);line-height:1.06;letter-spacing:-.045em}p{line-height:1.8;color:rgba(255,255,255,.67)}.em-auth-lead{margin:22px 0 30px;font-size:15px}
 			.em-auth-route{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin:30px 0;padding:18px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(0,0,0,.22)}.em-auth-node small{display:block;margin-bottom:7px;font:600 10px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:rgba(255,255,255,.36)}.em-auth-node strong{display:block;font-size:14px;overflow-wrap:anywhere}.em-auth-arrow{color:rgba(255,255,255,.35)}
 			.em-auth-note{display:flex;gap:10px;margin:0 0 30px;font-size:13px}.em-auth-dot{flex:0 0 auto;width:7px;height:7px;margin-top:9px;border-radius:50%;background:#fff;box-shadow:0 0 12px rgba(255,255,255,.8)}form{margin:0}.em-auth-button{appearance:none;border:1px solid #fff;border-radius:12px;padding:14px 22px;background:#fff;color:#0a0a0a;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .18s ease,background .18s ease}.em-auth-button:hover{transform:translateY(-1px);background:#e8e8e8}.em-auth-button:focus-visible{outline:3px solid rgba(255,255,255,.35);outline-offset:3px}
 			.em-auth-success{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;margin-bottom:24px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(255,255,255,.1);font-size:22px}.em-auth-foot{padding:20px;text-align:center;font:500 10px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:rgba(255,255,255,.3)}
-			@media(max-width:560px){.em-auth-head{height:64px}.em-auth-logo{width:32px;height:32px}.em-auth-main{padding:26px 0}.em-auth-card{border-radius:20px}.em-auth-route{grid-template-columns:1fr}.em-auth-arrow{transform:rotate(90deg);justify-self:start}.em-auth-button{width:100%}}
+			@media(max-width:560px){.em-auth-head{height:64px}.em-auth-logo{width:150px;max-height:25px}.em-auth-kicker{display:none}.em-auth-main{padding:26px 0}.em-auth-card{border-radius:20px}.em-auth-route{grid-template-columns:1fr}.em-auth-arrow{transform:rotate(90deg);justify-self:start}.em-auth-button{width:100%}}
 		</style>
 	</head>
 	<body>
 	<div class="em-auth-shell">
-		<header class="em-auth-head"><img class="em-auth-logo" src="<?php echo esc_url( $logo_url ); ?>" alt=""><span class="em-auth-kicker">EMERGE MONO / SECURE CONNECTION</span></header>
+		<header class="em-auth-head"><img class="em-auth-logo" src="<?php echo esc_url( $logo_url ); ?>" alt="Emerge Mono"><span class="em-auth-kicker">SECURE CONNECTION</span></header>
 		<main class="em-auth-main"><section class="em-auth-card">
 			<?php if ( $approved ) : ?>
 				<div class="em-auth-success" aria-hidden="true">✓</div><p class="em-auth-eyebrow">CONNECTION APPROVED</p><h1>接続を許可しました。</h1>

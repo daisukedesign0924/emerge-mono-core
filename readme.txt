@@ -1,6 +1,6 @@
 === Emerge Mono - Core ===
 Contributors: emergemono
-Stable tag: 1.28.7
+Stable tag: 1.28.11
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -9,6 +9,19 @@ License: GPLv2 or later
 A core engine that imports complete HTML designs and makes their selected content editable in WordPress.
 
 == Changelog ==
+
+= 1.28.11 =
+* Published the new Emerge Mono wordmark and content-editor spacing refinements through the signed GitHub update channel.
+
+= 1.28.10 =
+* Added consistent horizontal padding to the title, URL slug and editable-field area in the Core content editor.
+* Added narrower responsive padding for compact screens.
+
+= 1.28.9 =
+* Added the Emerge Mono wordmark to the Codex connection authorization screen.
+
+= 1.28.8 =
+* Replaced the Core dashboard rail symbol with the new Emerge Mono wordmark.
 
 = 1.28.7 =
 * Added signed GitHub Releases update discovery and SHA-256 package verification.

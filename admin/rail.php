@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function emcore_rail_render() {
 	$page = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
 	echo '<aside class="emcore-rail">';
-	echo '<div class="emcore-rail-brand"><img class="emcore-brand-logo" src="' . esc_url( EMCORE_URL . 'assets/img/icon-w.webp' ) . '" alt="Emerge Mono"></div>';
+	echo '<div class="emcore-rail-brand"><img class="emcore-brand-logo" src="' . esc_url( EMCORE_URL . 'assets/img/emerge-mono-wordmark-white.webp' ) . '" alt="Emerge Mono"></div>';
 	echo '<nav class="emcore-rail-nav">';
 	echo '<a class="' . esc_attr( $page === 'emerge-mono-core' ? 'is-active' : '' ) . '" href="' . esc_url( admin_url( 'admin.php?page=emerge-mono-core' ) ) . '"><span class="emcore-rail-icon dashicons dashicons-dashboard"></span><span>ダッシュボード</span></a>';
 	echo '<div class="emcore-workspace-group" data-emcore-workspace-group="manage" hidden>';

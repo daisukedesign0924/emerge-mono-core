@@ -387,7 +387,7 @@ html:has(.emcore-shell) { background: #0d0d0d !important; }
 .emcore-editor-form{max-width:1280px}.emcore-editor-main{min-width:0}.emcore-editor-actions{display:flex;align-items:center;gap:14px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)}
 .emcore-empty-state{padding:42px}.emcore-empty-state h3{color:#fff;margin-top:0}
 #emcore-client-form{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px 26px;max-width:1460px;background:transparent;border:0;padding:0;align-items:start}
-#emcore-client-form>.emcore-field{grid-column:1;margin:0;padding:0 0 24px;border:0;border-bottom:1px solid rgba(255,255,255,.08);border-radius:0;background:transparent}
+#emcore-client-form>.emcore-field{grid-column:1;margin:0;padding:0 20px 24px;box-sizing:border-box;border:0;border-bottom:1px solid rgba(255,255,255,.08);border-radius:0;background:transparent}
 #emcore-client-form>.emcore-field>label{display:block;margin:0 0 9px;color:rgba(255,255,255,.64);font-size:12px;font-weight:600}
 #emcore-client-form>.emcore-title-field{grid-row:1;padding-top:4px}
 #emcore-client-form>.emcore-title-field .emcore-slug-label{margin-top:22px}
@@ -406,7 +406,7 @@ html:has(.emcore-shell) { background: #0d0d0d !important; }
 #emcore-client-form>.emcore-status-card{grid-column:2}
 .emcore-side-title{padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.62);font-size:12px;font-weight:700}.emcore-featured-card .emcore-img-row{display:grid;gap:12px}.emcore-featured-card .emcore-img-preview{position:relative;width:100%;aspect-ratio:16/10;padding:0;border:1px dashed rgba(255,255,255,.16);border-radius:8px;background:rgba(255,255,255,.025);overflow:hidden;cursor:pointer;color:rgba(255,255,255,.4)}.emcore-featured-card .emcore-img-preview img{width:100%;height:100%;object-fit:cover;display:block}.emcore-thumb-placeholder{height:100%;display:grid;place-content:center;justify-items:center;gap:8px}.emcore-thumb-placeholder .dashicons{font-size:30px;width:30px;height:30px}.emcore-thumb-placeholder b{font-size:11px;font-weight:500}.emcore-thumb-overlay{position:absolute;inset:auto 0 0;padding:9px;background:rgba(0,0,0,.7);color:#fff;font-size:11px;opacity:0;transition:opacity .15s}.emcore-img-preview:hover .emcore-thumb-overlay{opacity:1}.emcore-thumb-actions{display:flex;gap:8px;flex-wrap:wrap}.emcore-thumb-actions .emcore-btn{flex:1}.emcore-thumb-actions [hidden]{display:none!important}
 @media(max-width:900px){#emcore-client-form{grid-template-columns:1fr}#emcore-client-form>.emcore-field,#emcore-client-form>.emcore-side-card,#emcore-client-form>.emseo-embedded{grid-column:1;grid-row:auto}.emcore-slug-field{flex-wrap:wrap}.emcore-slug-field>span{max-width:100%}}
-@media(max-width:640px){.emcore-editor-page-nav{align-items:stretch}.emcore-editor-page-actions{width:100%;flex-wrap:wrap}.emcore-editor-page-actions .emcore-msg{width:100%;order:3;margin:0}.emcore-editor-page-actions .emcore-btn{flex:1;justify-content:center}}
+@media(max-width:640px){#emcore-client-form>.emcore-field{padding-right:14px;padding-left:14px}.emcore-editor-page-nav{align-items:stretch}.emcore-editor-page-actions{width:100%;flex-wrap:wrap}.emcore-editor-page-actions .emcore-msg{width:100%;order:3;margin:0}.emcore-editor-page-actions .emcore-btn{flex:1;justify-content:center}}
 .emcore-status-badge { display:inline-flex; align-items:center; gap:7px; padding:4px 9px; border:1px solid rgba(255,255,255,.11); border-radius:999px; color:rgba(255,255,255,.58); font-size:10.5px; }
 .emcore-status-badge i { width:6px; height:6px; border-radius:50%; background:#d5a15a; }
 .emcore-status-badge.is-publish { color:#92ddb0; border-color:rgba(94,255,152,.2); background:rgba(94,255,152,.035); }
@@ -841,8 +841,9 @@ body.emcore-editor-mode:not(.emcore-editor-normal) .emcore-topbar { border-radiu
 }
 .emcore-brand-logo {
     display:block;
-    width:42px;
-    height:42px;
+    width:168px;
+    height:auto;
+    max-height:32px;
     object-fit:contain;
 }
 @media(max-width:900px){
@@ -851,7 +852,7 @@ body.emcore-editor-mode:not(.emcore-editor-normal) .emcore-topbar { border-radiu
 @media(max-width:700px){
     .emcore-rail { height:auto; max-height:none; padding:14px 10px; }
     .emcore-rail-brand { min-height:0; padding:4px 8px 12px; }
-    .emcore-brand-logo { width:34px; height:34px; }
+    .emcore-brand-logo { width:148px; height:auto; max-height:28px; }
 }
 
 /* v1.23.2 — monochrome Spatial palette */
